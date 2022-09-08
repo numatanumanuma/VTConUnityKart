@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<robot name="mobile_robot">
+
+  <!--ベースフットプリント-->
+  <link name="base_footprint" />
+
+  <!--ベースフットプリントとベースリンクのジョイント-->
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0.126" />
+    <parent link="base_footprint" />
+    <child link="base_link" />
+  </joint>
+
+  <!--ベースリンク-->
+  <link name="base_link">
+    <!--可視化情報-->
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.23" />
+      </geometry>
+      <material name="white">
+        <color rgba="1.0 1.0 1.0 1.0" />
+      </material>
+    </visual>
+
+    <!--衝突属性-->
+    <collision>
+      <geometry>
+        <box size="0.3 0.3 0.23" />
+      </geometry>
+    </collision>
+
+    <!--慣性属性-->
+    <inertial>
+      <mass value="1.0" />
+      <inertia ixx="0.01191" iyy="0.01191" izz="0.01500" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+  </link>
+
+  <!--ベースリンクと左車輪のジョイント-->
+  <joint name="left_wheel_joint" type="continuous">
+    <axis xyz="0 0 1" />
+    <parent link="base_link" />
+    <child link="left_wheel" />
+    <origin rpy="-1.5708 0 0" xyz="0.0 0.125 -.09" />
+  </joint>
+
+  <!--左車輪-->
+  <link name="left_wheel">
+    <!--可視化情報-->
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.035" />
+      </geometry>
+      <material name="gray">
+        <color rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+
+    <!--衝突属性-->
+    <collision>
+      <geometry>
+        <cylinder length="0.05" radius="0.035" />
+      </geometry>
+    </collision>
+
+    <!--慣性属性-->
+    <inertial>
+      <mass value="0.1" />
+      <inertia ixx="0.00005" iyy="0.00005" izz="0.00006" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+  </link>
+
+  <!--ベースリンクと右車輪のジョイント-->
+  <joint name="right_wheel_joint" type="continuous">
+    <axis xyz="0 0 1" />
+    <parent link="base_link" />
+    <child link="right_wheel" />
+    <origin rpy="-1.5708 0 0" xyz="0.0 -0.125 -.09" />
+  </joint>
+
+  <!--右車輪-->
+  <link name="right_wheel">
+    <!--可視化情報-->
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.035" />
+      </geometry>
+      <material name="gray">
+        <color rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+
+    <!--衝突属性-->
+    <collision>
+      <geometry>
+        <cylinder length="0.05" radius="0.035" />
+      </geometry>
+    </collision>
+
+    <!--慣性属性-->
+    <inertial>
+      <mass value="0.1" />
+      <inertia ixx="0.00005" iyy="0.00005" izz="0.00006" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+  </link>
+
+  <!--ベースリンクとベーススキャンのジョイント-->
+  <joint name="scan_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 0.2" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="base_scan" />
+  </joint>
+
+  <!--ベーススキャンー-->
+  <link name="base_scan">
+    <!--可視化情報-->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.1 0.1 0.1" />
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+
+    <!--衝突属性-->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+
+    <!--慣性属性-->
+    <inertial>
+      <mass value="0.1" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.00017" iyy="0.00017" izz="0.00017" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+  </link>
+
+</robot>
